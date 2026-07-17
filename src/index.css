@@ -19,3 +19,106 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.task-form-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0 0 0 / 40%);
+}
+
+.task-form-dialog {
+    box-sizing: border-box;
+    width: 400px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 32px);
+    padding: 28px 32px;
+    overflow-y: auto;
+    color: #1f2937;
+    font-family: inherit;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgb(0 0 0 / 25%);
+}
+
+.task-form-dialog h2 {
+    margin: 0 0 20px;
+    font-size: 20px;
+}
+
+.task-form-dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.task-form-dialog label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #4b5563;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Direct children only — the BryntumDateField's inner input styles itself */
+.task-form-dialog label > input,
+.task-form-dialog label > select {
+    padding: 8px 10px;
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: 400;
+    background: #fff;
+    border: 1px solid #c9ced6;
+    border-radius: 6px;
+}
+
+.task-form-dialog label > input:focus-visible,
+.task-form-dialog label > select:focus-visible {
+    outline: 2px solid var(--b-color-blue, #1e88e5);
+    outline-offset: -1px;
+}
+
+.field-error {
+    margin: 0;
+    color: #c0392b;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.task-form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.task-form-actions button {
+    padding: 9px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: background-color 0.15s;
+}
+
+.task-form-actions button[type='submit'] {
+    color: #fff;
+    background: var(--b-color-blue, #1e88e5);
+}
+
+.task-form-actions button[type='submit']:hover {
+    background: #1976d2;
+}
+
+.task-form-actions button[type='button'] {
+    color: #374151;
+    background: #fff;
+    border-color: #c9ced6;
+}
+
+.task-form-actions button[type='button']:hover {
+    background: #f3f4f6;
+}
