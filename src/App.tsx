@@ -5,8 +5,8 @@ import {
     type BryntumSchedulerProProps
 } from '@bryntum/schedulerpro-react';
 import { projectProps, schedulerProProps } from './AppConfig';
-import TaskFormDialog, { type TaskFormValues } from './TaskFormDialog';
-import type { TaskRecord } from './lib/TaskModel';
+import TaskFormDialog from './TaskFormDialog';
+import type { TaskFormValues } from './taskFormSchema';import type { TaskRecord } from './lib/TaskModel';
 
 export default function App() {
     const projectRef = useRef<BryntumSchedulerProProjectModel>(null);
@@ -33,9 +33,7 @@ export default function App() {
         task.beginBatch();
         try {
             task.name = values.name;
-            if (values.startDate) {
-                task.setStartDate(values.startDate, false);
-            }
+            task.setStartDate(values.startDate, false);
             task.duration = values.duration;
             task.priority = values.priority;
         }

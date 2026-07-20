@@ -12,9 +12,11 @@
   "dependencies": {
     "@bryntum/schedulerpro": "^7.3.3",
     "@bryntum/schedulerpro-react": "^7.3.3",
+    "@hookform/resolvers": "^5.4.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-hook-form": "^7.81.0"
+    "react-hook-form": "^7.81.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^24.13.2",

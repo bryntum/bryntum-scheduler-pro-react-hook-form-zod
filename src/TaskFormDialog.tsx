@@ -2,16 +2,15 @@ import { Controller, useForm } from 'react-hook-form';
 import { BryntumDateField } from '@bryntum/schedulerpro-react';
 import {
     taskPriorities,
-    type TaskPriority,
     type TaskRecord,
 } from './lib/TaskModel';
 
-export interface TaskFormValues {
-    name: string;
-    startDate: Date | null;
-    duration: number;
-    priority: TaskPriority;
-}
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+    taskFormSchema,
+    type TaskFormInput,
+    type TaskFormValues,
+} from './taskFormSchema';
 
 interface TaskFormDialogProps {
     task: TaskRecord | null;
@@ -33,7 +32,8 @@ function TaskForm({ task, onClose, onSave }: TaskFormDialogProps & {
         handleSubmit,
         control,
         formState: { errors },
-    } = useForm<TaskFormValues>({
+    } = useForm<TaskFormInput, unknown, TaskFormValues>({
+        resolver: zodResolver(taskFormSchema),
         defaultValues: {
             name: task.name ?? '',
             startDate: (task.startDate as Date | null) ?? null,
@@ -54,7 +54,7 @@ function TaskForm({ task, onClose, onSave }: TaskFormDialogProps & {
                 className="task-form-dialog"
                 role="dialog"
             >
-                <h2 id="task-form-title">Edit task (React Hook Form)</h2>
+                <h2 id="task-form-title">Edit task (React Hook Form + Zod)</h2>
 
                 <form noValidate onSubmit={handleSubmit((values) => onSave(task, values))}>
                     <label>
@@ -63,24 +63,18 @@ function TaskForm({ task, onClose, onSave }: TaskFormDialogProps & {
                             aria-describedby={errors.name ? 'name-error' : undefined}
                             aria-invalid={Boolean(errors.name)}
                             autoFocus
-                            {...register('name', {
-                                required: 'Name is required',
-                                minLength: {
-                                    value: 5,
-                                    message: 'Name must be at least 5 characters',
-                                },
-                            })}
+                            {...register('name')}
                         />
                         {errors.name && (
                             <p className="field-error" id="name-error" role="alert">{errors.name.message}</p>
                         )}
                     </label>
+
                     <label>
                         Start date
                         <Controller
                             name="startDate"
                             control={control}
-                            rules={{ required: 'Start date is required' }}
                             render={({ field }) => (
                                 <BryntumDateField
                                     ariaDescription={errors.startDate?.message}
@@ -95,26 +89,23 @@ function TaskForm({ task, onClose, onSave }: TaskFormDialogProps & {
                             <p className="field-error" role="alert">{errors.startDate.message}</p>
                         )}
                     </label>
+
                     <label>
                         Duration (days)
                         <input
                             aria-describedby={errors.duration ? 'duration-error' : undefined}
                             aria-invalid={Boolean(errors.duration)}
                             type="number"
-                            {...register('duration', {
-                                required: 'Duration is required',
-                                valueAsNumber: true,
-                                min: { value: 1, message: 'Duration must be at least 1 day' },
-                                max: { value: 60, message: 'Duration must be at most 60 days' },
-                            })}
+                            {...register('duration', { valueAsNumber: true })}
                         />
                         {errors.duration && (
                             <p className="field-error" id="duration-error" role="alert">{errors.duration.message}</p>
                         )}
-                    </label>    
+                    </label>
+
                     <label>
                         Priority
-                        <select {...register('priority', { required: true })}>
+                        <select {...register('priority')}>
                             {taskPriorities.map((priority) => (
                                 <option key={priority} value={priority}>{priority}</option>
                             ))}
