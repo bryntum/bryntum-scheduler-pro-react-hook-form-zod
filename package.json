@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@bryntum/schedulerpro": "^7.3.3",
+    "@bryntum/schedulerpro": "npm:@bryntum/schedulerpro-trial@^7.3.3",
     "@bryntum/schedulerpro-react": "^7.3.3",
     "@hookform/resolvers": "^5.4.0",
     "react": "^19.2.7",
