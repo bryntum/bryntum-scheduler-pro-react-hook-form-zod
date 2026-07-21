@@ -1,32 +1,25 @@
-# React + TypeScript + Vite
+# Using React Hook Form and Zod with Bryntum Scheduler Pro
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A [Bryntum Scheduler Pro](https://bryntum.com/products/schedulerpro/) showing form validation in the task editor. There are three demos:
 
-Currently, two official plugins are available:
+1. The `main` branch shows a customized task editor using built-in validation. 
+2. The `react-hook-form` branch replaces the task editor with a custom [React Hook Form](https://react-hook-form.com/) task editor and shows how to add a Bryntum date widget with React Hook Form validation.
+3. The `react-hook-form-zod` branch moves the validation rules into a [Zod](https://zod.dev/) schema.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Install dependencies
 
-## React Compiler
+Run the following command to install the project dependencies:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Run the development server
+
+Run the Vite development server:
+
+```bash
+npm run dev
+```
+
+The server will start on `http://localhost:5173`.
