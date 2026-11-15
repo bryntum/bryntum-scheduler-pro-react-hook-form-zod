@@ -1,6 +1,6 @@
-# Using React Hook Form and Zod with Bryntum Scheduler Pro
+# Using React Hook Form and Zod with Bryntum Scheduler
 
-A [Bryntum Scheduler Pro](https://bryntum.com/products/schedulerpro/) showing form validation in the task editor. There are three demos:
+A [Bryntum Scheduler](https://bryntum.com/products/scheduler/) showing form validation in the task editor. There are three demos:
 
 1. The `main` branch shows a customized task editor using built-in validation. 
 2. The `react-hook-form` branch replaces the task editor with a custom [React Hook Form](https://react-hook-form.com/) task editor and shows how to add a Bryntum date widget with React Hook Form validation.
