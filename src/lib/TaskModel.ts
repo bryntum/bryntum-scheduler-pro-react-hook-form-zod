@@ -1,4 +1,4 @@
-import { EventModel } from '@bryntum/schedulerpro';
+import { EventModel } from '@bryntum/scheduler-enterprise';
 
 export const taskPriorities = ['low', 'medium', 'high'] as const;
 export type TaskPriority = (typeof taskPriorities)[number];
