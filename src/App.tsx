@@ -4,7 +4,7 @@ import {
     BryntumSchedulerProjectModel,
     type BryntumSchedulerProps
 } from '@bryntum/scheduler-react-enterprise';
-import { projectProps, schedulerProProps } from './AppConfig';
+import { projectProps, schedulerProps } from './AppConfig';
 import TaskFormDialog from './TaskFormDialog';
 import type { TaskFormValues } from './taskFormSchema';import type { TaskRecord } from './lib/TaskModel';
 
@@ -12,7 +12,7 @@ export default function App() {
     const projectRef = useRef<BryntumSchedulerProjectModel>(null);
     const [editingTask, setEditingTask] = useState<TaskRecord | null>(null);
     const [project] = useState(projectProps);
-    const [schedulerPro] = useState(schedulerProProps);
+    const [scheduler] = useState(schedulerProps);
 
     const [listeners] = useState<
         NonNullable<BryntumSchedulerProps['listeners']>
@@ -50,7 +50,7 @@ export default function App() {
             <BryntumScheduler
                 project={projectRef}
                 listeners={listeners}
-                {...schedulerPro}
+                {...scheduler}
             />
             <TaskFormDialog
                 key={editingTask?.id ?? 'none'}
