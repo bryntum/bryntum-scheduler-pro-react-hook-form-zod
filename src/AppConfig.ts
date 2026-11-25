@@ -14,7 +14,7 @@ export const projectProps: BryntumSchedulerProjectModelProps = {
     },
 };
 
-export const schedulerProProps: BryntumSchedulerProps = {
+export const schedulerProps: BryntumSchedulerProps = {
     startDate: new Date(2026, 9, 5),
     viewPreset: 'weekAndDay',
     rowHeight: 50,
