@@ -3,19 +3,19 @@ import {
     BryntumScheduler,
     BryntumSchedulerProjectModel
 } from '@bryntum/scheduler-react-enterprise';
-import { projectProps, schedulerProProps } from './AppConfig';
+import { projectProps, schedulerProps } from './AppConfig';
 
 export default function App() {
     const projectRef = useRef<BryntumSchedulerProjectModel>(null);
     const [project] = useState(projectProps);
-    const [schedulerPro] = useState(schedulerProProps);
+    const [scheduler] = useState(schedulerProps);
 
     return (
         <>
             <BryntumSchedulerProjectModel ref={projectRef} {...project} />
             <BryntumScheduler
                 project={projectRef}
-                {...schedulerPro}
+                {...scheduler}
             />
         </>
     );
