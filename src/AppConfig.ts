@@ -1,10 +1,10 @@
 import type {
-    BryntumSchedulerProProjectModelProps,
-    BryntumSchedulerProProps,
-} from '@bryntum/schedulerpro-react';
+    BryntumSchedulerProjectModelProps,
+    BryntumSchedulerProps,
+} from '@bryntum/scheduler-react-enterprise';
 import TaskModel, { taskPriorities } from './lib/TaskModel';
 
-export const projectProps: BryntumSchedulerProProjectModelProps = {
+export const projectProps: BryntumSchedulerProjectModelProps = {
     eventModelClass: TaskModel,
     autoLoad: true,
     transport: {
@@ -14,7 +14,7 @@ export const projectProps: BryntumSchedulerProProjectModelProps = {
     },
 };
 
-export const schedulerProProps: BryntumSchedulerProProps = {
+export const schedulerProps: BryntumSchedulerProps = {
     startDate: new Date(2026, 9, 5),
     viewPreset: 'weekAndDay',
     rowHeight: 50,
