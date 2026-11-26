@@ -1,21 +1,21 @@
 import { useCallback, useRef, useState } from 'react';
 import {
-    BryntumSchedulerPro,
-    BryntumSchedulerProProjectModel,
-    type BryntumSchedulerProProps
-} from '@bryntum/schedulerpro-react';
-import { projectProps, schedulerProProps } from './AppConfig';
+    BryntumScheduler,
+    BryntumSchedulerProjectModel,
+    type BryntumSchedulerProps
+} from '@bryntum/scheduler-react-enterprise';
+import { projectProps, schedulerProps } from './AppConfig';
 import TaskFormDialog from './TaskFormDialog';
 import type { TaskFormValues } from './taskFormSchema';import type { TaskRecord } from './lib/TaskModel';
 
 export default function App() {
-    const projectRef = useRef<BryntumSchedulerProProjectModel>(null);
+    const projectRef = useRef<BryntumSchedulerProjectModel>(null);
     const [editingTask, setEditingTask] = useState<TaskRecord | null>(null);
     const [project] = useState(projectProps);
-    const [schedulerPro] = useState(schedulerProProps);
+    const [scheduler] = useState(schedulerProps);
 
     const [listeners] = useState<
-        NonNullable<BryntumSchedulerProProps['listeners']>
+        NonNullable<BryntumSchedulerProps['listeners']>
     >(() => ({
         beforeTaskEdit({ taskRecord }) {
             setEditingTask(taskRecord as TaskRecord);
@@ -46,11 +46,11 @@ export default function App() {
     }, []);
     return (
         <>
-            <BryntumSchedulerProProjectModel ref={projectRef} {...project} />
-            <BryntumSchedulerPro
+            <BryntumSchedulerProjectModel ref={projectRef} {...project} />
+            <BryntumScheduler
                 project={projectRef}
                 listeners={listeners}
-                {...schedulerPro}
+                {...scheduler}
             />
             <TaskFormDialog
                 key={editingTask?.id ?? 'none'}

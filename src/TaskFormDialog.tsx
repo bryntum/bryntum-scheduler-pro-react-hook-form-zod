@@ -1,5 +1,5 @@
 import { Controller, useForm } from 'react-hook-form';
-import { BryntumDateField } from '@bryntum/schedulerpro-react';
+import { BryntumDateField } from '@bryntum/core-react-enterprise';
 import {
     taskPriorities,
     type TaskRecord,
